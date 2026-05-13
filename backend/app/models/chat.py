@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
-from unittest.mock import Base
+from app.db.base import Base
 
 class Chat(Base):
     __tablename__ = "chats"
@@ -9,5 +9,5 @@ class Chat(Base):
     company_id = Column(Integer, ForeignKey("companies.id"))
     message = Column(String)
     response = Column(String)
-    timestamp = Column(String)
+    timestamp = Column(DateTime, default=datetime.utcnow)
     intent = Column(String)
